@@ -3,3 +3,8 @@ interface Destination {
   image: string;
   name: string;
 }
+
+interface Experience {
+  image: string;
+  name: string;
+}

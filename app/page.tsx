@@ -1,9 +1,13 @@
 import Banner from "@/components/Banner";
 import DestinationCard from "@/components/DestinationCard";
+import ExperienceCard from "@/components/ExperienceCard";
+
 import { fetchDestinations } from "@/lib/fetchDestinations";
+import { fetchExperiences } from "@/lib/fetchExperiences";
 
 export default async function HomePage() {
-  const destinations: Destination[] = await fetchDestinations();
+  const [destinations, experiences]: [Destination[], Experience[]] =
+    await Promise.all([fetchDestinations(), fetchExperiences()]);
 
   return (
     <>
@@ -23,6 +27,18 @@ export default async function HomePage() {
                 image={image}
                 name={name}
               />
+            ))}
+          </div>
+        </section>
+
+        <section className="pt-8 sm:pt-16">
+          <h2 className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl">
+            Live Anywhere
+          </h2>
+
+          <div className="-my-4 -ml-4 flex space-x-4 overflow-x-scroll py-4 pl-4 scrollbar-hide">
+            {experiences?.map(({ image, name }) => (
+              <ExperienceCard key={name} image={image} name={name} />
             ))}
           </div>
         </section>
