@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import DestinationCard from "@/components/DestinationCard";
 import ExperienceCard from "@/components/ExperienceCard";
+import Jumbotron from "@/components/Jumbotron";
 
 import { fetchDestinations } from "@/lib/fetchDestinations";
 import { fetchExperiences } from "@/lib/fetchExperiences";
@@ -41,6 +42,15 @@ export default async function HomePage() {
               <ExperienceCard key={name} image={image} name={name} />
             ))}
           </div>
+        </section>
+
+        <section className="pt-8 sm:pt-16">
+          <Jumbotron
+            buttonLabel="Get Inspired"
+            description="Wishlists curated by Vacasa."
+            image="https://i.ibb.co/sp4KjYn/jumbotron.webp"
+            title="The Greatest Outdoors"
+          />
         </section>
       </main>
     </>
