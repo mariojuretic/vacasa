@@ -13,6 +13,7 @@ export default function DestinationCard({
           alt={name}
           fill
           className="object-cover object-center"
+          sizes="64px"
         />
       </div>
 

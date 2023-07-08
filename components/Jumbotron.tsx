@@ -20,6 +20,7 @@ export default function Jumbotron({
         alt="Jumbotron"
         fill
         className="object-cover object-center"
+        sizes="(max-width: 1280px) 100vw, 1280px"
       />
 
       <div className="relative">

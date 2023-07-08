@@ -9,6 +9,7 @@ export default function ExperienceCard({ image, name }: Experience) {
           alt={name}
           fill
           className="object-cover object-center"
+          sizes="320px"
         />
       </div>
 

@@ -18,6 +18,7 @@ export default function Header() {
           alt="Logo"
           fill
           className="object-contain object-left"
+          sizes="144px"
         />
       </Link>
 

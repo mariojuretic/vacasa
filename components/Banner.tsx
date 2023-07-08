@@ -11,6 +11,8 @@ export default function Banner() {
         alt="Banner"
         fill
         className="object-cover object-center"
+        sizes="100vw"
+        priority
       />
 
       <div className="relative flex h-full w-full flex-col items-center justify-center space-y-4 text-center lg:space-y-8">
