@@ -14,7 +14,7 @@ export default async function HomePage() {
     <>
       <Banner />
 
-      <main className="mx-auto max-w-7xl px-8 pb-8 sm:px-16 sm:pb-16">
+      <div className="mx-auto max-w-7xl px-8 pb-8 sm:px-16 sm:pb-16">
         <section className="pt-8 sm:pt-16">
           <h2 className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl">
             Explore Nearby
@@ -52,7 +52,7 @@ export default async function HomePage() {
             title="The Greatest Outdoors"
           />
         </section>
-      </main>
+      </div>
     </>
   );
 }
