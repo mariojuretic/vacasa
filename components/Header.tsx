@@ -14,6 +14,7 @@ import {
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 import { format } from "date-fns";
 
+import progress from "@/lib/progress";
 import { useSearchStore } from "@/store/SearchStore";
 
 import logo from "@/assets/logo.png";
@@ -57,6 +58,7 @@ export default function Header() {
       `/search?location=${searchTerm}&from=${formattedStartDate}&to=${formattedEndDate}&guests=${noOfGuests}`
     );
 
+    progress.start();
     resetSearch();
   };
 

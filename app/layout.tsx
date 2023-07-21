@@ -1,8 +1,11 @@
 import { Metadata } from "next";
 import { Manrope } from "next/font/google";
 
+import { Suspense } from "react";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProgressBar from "@/components/ProgressBar";
 
 import "./globals.css";
 
@@ -29,6 +32,10 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+
+        <Suspense fallback={null}>
+          <ProgressBar />
+        </Suspense>
       </body>
     </html>
   );
