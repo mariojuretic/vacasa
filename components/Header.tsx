@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Bars3Icon,
   GlobeAltIcon,
   MagnifyingGlassIcon,
   UserCircleIcon,
-  UsersIcon,
   PlusIcon,
   MinusIcon,
 } from "@heroicons/react/24/outline";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
+import { format } from "date-fns";
 
 import { useSearchStore } from "@/store/SearchStore";
 
@@ -19,6 +20,8 @@ import logo from "@/assets/logo.png";
 import "@/styles/react-date-range.css";
 
 export default function Header() {
+  const router = useRouter();
+
   const [
     searchTerm,
     startDate,
@@ -44,6 +47,17 @@ export default function Header() {
   const dateChangeHandler = ({ selection }: RangeKeyDict) => {
     if (!selection.startDate || !selection.endDate) return;
     setDates(selection.startDate, selection.endDate);
+  };
+
+  const searchHandler = () => {
+    const formattedStartDate = format(new Date(startDate), "yyyy-MM-dd");
+    const formattedEndDate = format(new Date(endDate), "yyyy-MM-dd");
+
+    router.push(
+      `/search?location=${searchTerm}&from=${formattedStartDate}&to=${formattedEndDate}&guests=${noOfGuests}`
+    );
+
+    resetSearch();
   };
 
   const selectionRange = { startDate, endDate, key: "selection" };
@@ -121,7 +135,10 @@ export default function Header() {
               >
                 Cancel
               </button>
-              <button className="flex-1 rounded-lg bg-rose-500 p-2 text-white hover:bg-rose-600">
+              <button
+                className="flex-1 rounded-lg bg-rose-500 p-2 text-white hover:bg-rose-600"
+                onClick={searchHandler}
+              >
                 Search
               </button>
             </div>

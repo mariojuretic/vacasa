@@ -1,18 +1,48 @@
+import { redirect } from "next/navigation";
+import { format } from "date-fns";
+
 import PropertyCard from "@/components/PropertyCard";
 
 import { fetchProperties } from "@/lib/fetchProperties";
 
-export default async function SearchPage() {
+type Props = {
+  searchParams: {
+    location: string | undefined;
+    from: string | undefined;
+    to: string | undefined;
+    guests: string | undefined;
+  };
+};
+
+export default async function SearchPage({ searchParams }: Props) {
+  const {
+    location,
+    from: startDate,
+    to: endDate,
+    guests: noOfGuests,
+  } = searchParams;
+
+  if (!location || !startDate || !endDate || !noOfGuests) {
+    redirect("/");
+  }
+
+  // fetch properties based on search params
   const properties: Property[] = await fetchProperties();
+
+  const formattedStartDate = format(new Date(startDate), "dd MMMM yyyy");
+  const formattedEndDate = format(new Date(endDate), "dd MMMM yyyy");
+  const range = `${formattedStartDate} - ${formattedEndDate}`;
 
   return (
     <div className="flex">
       <section className="flex-1 p-8 lg:py-12">
         <div className="flex flex-col space-y-6 border-b border-stone-200 pb-8 lg:pb-12">
           <div className="flex flex-col space-y-2">
-            <p className="text-xs">Found 300+ stays for 2 guests</p>
+            <p className="text-xs">
+              {properties.length}+ stays | {range} | {noOfGuests} guests
+            </p>
             <h1 className="text-3xl font-bold tracking-tight">
-              Stays in London
+              Stays in {location}
             </h1>
           </div>
 
