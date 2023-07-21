@@ -21,6 +21,7 @@ export default function PropertyCard({
             alt={subtitle}
             fill
             className="rounded-lg object-cover object-center"
+            sizes="(max-width: 639px) 100vw, (max-width: 767px) 208px, 320px"
           />
 
           <HeartIcon className="absolute right-2 top-2 h-6 w-6 fill-black/40 stroke-white drop-shadow" />
