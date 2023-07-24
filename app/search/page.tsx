@@ -64,7 +64,7 @@ export default async function SearchPage({ searchParams }: Props) {
       </section>
 
       <section className="hidden h-[calc(100vh-153px)] border-l border-stone-200 bg-stone-50 xl:block xl:w-2/5 2xl:w-1/2">
-        <MapView />
+        <MapView properties={properties} />
       </section>
     </div>
   );
