@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { format } from "date-fns";
 
 import PropertyCard from "@/components/PropertyCard";
+import MapView from "@/components/MapView";
 
 import { fetchProperties } from "@/lib/fetchProperties";
 
@@ -35,7 +36,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
   return (
     <div className="flex">
-      <section className="flex-1 p-8 lg:py-12">
+      <section className="flex-1 p-8 lg:py-12 xl:h-[calc(100vh-153px)] xl:overflow-y-scroll">
         <div className="flex flex-col space-y-6 border-b border-stone-200 pb-8 lg:pb-12">
           <div className="flex flex-col space-y-2">
             <p className="text-xs">
@@ -62,8 +63,8 @@ export default async function SearchPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <section className="hidden bg-stone-400 xl:block xl:w-2/5 2xl:w-1/2">
-        {/* Map */}
+      <section className="hidden h-[calc(100vh-153px)] border-l border-stone-200 bg-stone-50 xl:block xl:w-2/5 2xl:w-1/2">
+        <MapView />
       </section>
     </div>
   );

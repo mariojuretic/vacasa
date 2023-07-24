@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-stone-100 py-4 text-sm text-stone-600 sm:py-8">
+    <footer className="border-t border-stone-200 bg-stone-100 py-4 text-sm text-stone-600">
       <div className="mx-auto max-w-7xl px-8 sm:px-16">
         <ul className="flex items-center justify-center sm:justify-start">
           <li>&copy; {currentYear} Vacasa</li>
